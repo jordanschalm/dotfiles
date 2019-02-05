@@ -1,3 +1,6 @@
+" Initialize Pathogen and install plugins
+execute pathogen#infect()
+
 """"""""""""""""""""""""""""""""""""""
 " General
 """"""""""""""""""""""""""""""""""""""
