@@ -1,5 +1,28 @@
-" Initialize Pathogen and install plugins
-execute pathogen#infect()
+""""""""""""""""""""""""""""""""""""""
+" Plugins
+""""""""""""""""""""""""""""""""""""""
+
+" I use vim-plug to install plugins
+call plug#begin()
+
+Plug 'scrooloose/nerdtree'
+
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
+
+Plug 'editorconfig/editorconfig-vim'
+
+call plug#end()
+
+" Ctrl-P opens fuzzy file finder
+nnoremap <C-P> :Files<CR>
+
+" Make FZF respect gitignore if `ag` is installed
+if (executable('ag'))
+    let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
+endif
 
 """"""""""""""""""""""""""""""""""""""
 " General
@@ -7,6 +30,9 @@ execute pathogen#infect()
 
 " Sets how many lines of history VIM remembers
 set history=500
+
+" Turns off VI compatibility
+set nocompatible
 
 " Enable filetype plugins
 filetype plugin on
