@@ -1,17 +1,13 @@
-# Set up nvm
-export NVM_DIR="$HOME/.nvm"
-  . "/usr/local/opt/nvm/nvm.sh"
-
 # Add go and $GOPATH/bin to PATH
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
-export PATH=$PATH:/Users/jordan/dev/bin
+export PATH=$PATH:/Users/$(whoami)/dev/bin
 
 # Set Go path
-export GOPATH=/Users/jordan/dev
-export DEVPATH=/Users/jordan/dev
+export GOPATH=/Users/$(whoami)/dev
+export DEVPATH=$GOPATH
 
 # Mark Go modules as turned on
-export GO111MODULE=on
+export GO111MODULE=off
 
 # Shortcut to dev directory
 alias dev="cd $DEVPATH/src"
@@ -21,9 +17,20 @@ alias dev="cd $DEVPATH/src"
 export GPG_TTY=$(tty)
 
 # Add code completion to Google cloud CLI
-source ~/.gcloud/google-cloud-sdk/completion.bash.inc
-source ~/.gcloud/google-cloud-sdk/path.bash.inc
+if [ -f ~/.gcloud/google-cloud-sdk ]; then
+    source ~/.gcloud/google-cloud-sdk/completion.bash.inc 
+    source ~/.gcloud/google-cloud-sdk/path.bash.inc
+fi
 
 # Fuck CLI
 eval "$(thefuck --alias)"
 
+# Git auto-complete
+if [ -f ~/.bash_scripts/git-autocomplete.bash ]; then
+    source ~/.bash_scripts/git-autocomplete.bash
+fi
+
+# If in work environment, source Dapper-specific config
+if [ -f ~/.bashrc.dapper ]; then
+    source ~/.bashrc.dapper
+fi
