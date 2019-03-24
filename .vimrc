@@ -7,6 +7,16 @@ call plug#begin()
 
 Plug 'scrooloose/nerdtree'
 
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+" Add auto-complete for Go
+Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
@@ -16,6 +26,10 @@ Plug 'editorconfig/editorconfig-vim'
 
 call plug#end()
 
+"""
+" Fuzzy Finder
+"""
+
 " Ctrl-P opens fuzzy file finder
 nnoremap <C-P> :Files<CR>
 
@@ -23,6 +37,16 @@ nnoremap <C-P> :Files<CR>
 if (executable('ag'))
     let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 endif
+
+"""
+" Deoplete Auto-completion
+"""
+
+" Start Deoplete on startup
+let g:deoplete#enable_at_startup = 1
+
+" Use tab to cycle through autocomplete suggestions
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 """"""""""""""""""""""""""""""""""""""
 " General
