@@ -48,6 +48,19 @@ let g:deoplete#enable_at_startup = 1
 " Use tab to cycle through autocomplete suggestions
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
+"""
+" Go
+"""
+
+" Use goimports rather than gofmt on save
+let g:go_fmt_command = "goimports"
+
+" Highlight types, struct fields, function declarations and invocations 
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+
 """"""""""""""""""""""""""""""""""""""
 " General
 """"""""""""""""""""""""""""""""""""""
