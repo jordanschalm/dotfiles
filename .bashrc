@@ -7,7 +7,7 @@ export GOPATH=/Users/$(whoami)/dev
 export DEVPATH=$GOPATH
 
 # Mark Go modules as turned on
-export GO111MODULE=off
+export GO111MODULE=on
 
 # Shortcut to dev directory
 alias dev="cd $DEVPATH/src"
@@ -23,7 +23,7 @@ if [ -f ~/.gcloud/google-cloud-sdk ]; then
 fi
 
 # Fuck CLI
-eval "$(thefuck --alias)"
+# eval "$(thefuck --alias)"
 
 # Git auto-complete
 if [ -f ~/.bash_scripts/git-autocomplete.bash ]; then
