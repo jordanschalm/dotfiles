@@ -22,9 +22,6 @@ if [ -f ~/.gcloud/google-cloud-sdk ]; then
     source ~/.gcloud/google-cloud-sdk/path.bash.inc
 fi
 
-# Fuck CLI
-# eval "$(thefuck --alias)"
-
 # Git auto-complete
 if [ -f ~/.bash_scripts/git-autocomplete.bash ]; then
     source ~/.bash_scripts/git-autocomplete.bash
