@@ -1,0 +1,19 @@
+[gpg]
+	program = /usr/local/bin/gpg
+[user]
+	signingkey = C7DF35D9
+	name = Jordan Schalm
+	email = jordan@dapperlabs.com
+[commit]
+	gpgsign = true
+
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+[push]
+	default = current
+
+[alias]
+    upstream = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
+    co = checkout
+[core]
+	attributesfile = ~/.gitattributes
