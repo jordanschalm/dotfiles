@@ -1,9 +1,9 @@
 [gpg]
-	program = /usr/local/bin/gpg
+	program = /opt/homebrew/bin/gpg
 [user]
-	signingkey = C7DF35D9
+	signingkey = 88EDFF0B
 	name = Jordan Schalm
-	email = jordan@dapperlabs.com
+	email = jordan.schalm@gmail.com
 [commit]
 	gpgsign = true
 

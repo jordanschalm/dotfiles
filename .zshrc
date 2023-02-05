@@ -1,3 +1,9 @@
+# Set PATH, MANPATH, etc., for Homebrew.
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Alias for interacting with dotfiles Git repo
+alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
 ## Git
 
 # Git auto-completion
@@ -32,6 +38,6 @@ if [ -f ~/.zshrc.dapper ]; then
 fi
 
 ## References
-
 # Homebrew multi-user Setup
 # Ref: https://stackoverflow.com/questions/41840479/how-to-use-homebrew-on-a-multi-user-macos-sierra-setup
+# Git bare repo dotfiles setup https://www.atlassian.com/git/tutorials/dotfiles
