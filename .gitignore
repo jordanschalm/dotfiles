@@ -1,7 +1,4 @@
 *
-!.vimrc
-!.bash_profile
-!.bashrc
 !.zshrc
 !.vim/plugged
 !.vim/autoload
