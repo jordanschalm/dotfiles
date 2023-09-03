@@ -1,5 +1,5 @@
 [gpg]
-	program = /usr/local/bin/gpg
+	program = gpg
 [user]
 	signingkey = C7DF35D9
 	name = Jordan Schalm
@@ -17,3 +17,5 @@
     co = checkout
 [core]
 	attributesfile = ~/.gitattributes
+[branch]
+	autoSetupMerge = always
