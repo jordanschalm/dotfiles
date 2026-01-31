@@ -7,7 +7,7 @@ Personal configuration files (dotfiles) integrated into the base monorepo using 
 - **Shell**: Zsh (`.zshrc`, `.zshscripts/`)
 - **Editor**: Vim (`.vimrc`, `.vim/`)
 - **Version Control**: Git (`.gitconfig`, `.gitattributes`, `.gitignore`)
-- **Security**: GPG (`.gnupg/`)
+- **Security**: GPG (`.gnupg/` - stored in files/ but NOT symlinked due to strict permission requirements)
 - **Synchronization**: Symlinks (files/ → ~/)
 - **Automation**: Make, Bash scripts
 
@@ -25,7 +25,7 @@ Personal configuration files (dotfiles) integrated into the base monorepo using 
 │   ├── .gitconfig           # Git configuration
 │   ├── .gitattributes       # Git attributes
 │   ├── .gitignore           # Global git ignore patterns
-│   ├── .gnupg/              # GPG configuration
+│   ├── .gnupg/              # GPG configuration (NOT symlinked - needs strict permissions)
 │   ├── .vim/                # Vim plugins and configuration
 │   ├── .zshscripts/         # Custom Zsh scripts and functions
 │   └── .meta/               # Metadata (if present)
@@ -82,7 +82,8 @@ Each file/directory in `files/` is symlinked to the home directory:
 ~/.gitconfig   → /Users/jord/dev/base/dotfiles/files/.gitconfig
 ~/.vim/        → /Users/jord/dev/base/dotfiles/files/.vim/
 ~/.zshscripts/ → /Users/jord/dev/base/dotfiles/files/.zshscripts/
-# etc.
+~/.meta/       → /Users/jord/dev/base/dotfiles/files/.meta/
+# Note: .gnupg is NOT symlinked (GPG requires directory permissions of 700)
 ```
 
 **Benefits:**
@@ -130,8 +131,9 @@ The `dotfiles-claude` script is installed to `~/.local/bin/` (following monorepo
 ### GPG Configuration (.gnupg/)
 
 - **Purpose**: GPG key management and encryption settings
-- **Location**: `files/.gnupg/`
-- **Security**: Sensitive, ensure proper permissions
+- **Location**: `files/.gnupg/` (reference copy only, NOT symlinked)
+- **Security**: Sensitive, GPG requires directory permissions of 700 which conflicts with symlinks
+- **Note**: GPG config is stored in files/ for backup/reference but managed directly in `~/.gnupg/`
 
 ## Safety Features
 
