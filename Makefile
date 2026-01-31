@@ -10,7 +10,8 @@ BIN_DIR := $(HOME)/.local/bin
 
 # Files and directories to symlink
 DOTFILES := .vimrc .zshrc .gitconfig .gitattributes .gitignore
-DOT_DIRS := .gnupg .vim .zshscripts .meta
+DOT_DIRS := .vim .zshscripts .meta
+# Note: .gnupg excluded - GPG requires strict directory permissions (700) and doesn't work well with symlinks
 
 .PHONY: help install link backup verify status uninstall install-script
 
@@ -41,6 +42,9 @@ link: ## Create symlinks from files/ to ~/
 		src="$(FILES_DIR)/$$dir"; \
 		dest="$(HOME_DIR)/$$dir"; \
 		if [ -e "$$src" ]; then \
+			if [ -d "$$dest" ] && [ ! -L "$$dest" ]; then \
+				rm -rf "$$dest"; \
+			fi; \
 			ln -sf "$$src" "$$dest"; \
 			echo "  $$dir/ → ~/$$(basename $$dir)/"; \
 		fi; \
