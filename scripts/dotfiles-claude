@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# dotfiles-claude: Invoke Claude Code in the dotfiles directory from anywhere
+# Usage: dotfiles-claude [args...]
+
+set -e
+
+DOTFILES_DIR="/Users/jord/dev/base/dotfiles"
+
+if ! command -v claude &> /dev/null; then
+    echo "Error: 'claude' command not found. Install Claude Code first."
+    exit 1
+fi
+
+cd "$DOTFILES_DIR"
+
+if [ $# -eq 0 ]; then
+    echo "Starting Claude Code in dotfiles directory..."
+    exec claude
+else
+    exec claude "$@"
+fi

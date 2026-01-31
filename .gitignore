@@ -1,4 +1,12 @@
-*
-!.zshrc
-!.vim/plugged
-!.vim/autoload
+# Backup directory (timestamped backups of dotfiles)
+backups/
+
+# Vim runtime files
+files/.vim/.netrwhist
+files/.vim/swp
+
+# Machine-specific overrides
+*.local
+
+# macOS
+.DS_Store
